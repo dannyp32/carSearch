@@ -2,17 +2,13 @@
 // @name           Craigslist Salvage Detector
 // @namespace      daniel.pino
 // @description    Shows ad preview on link mouseover
-// @include        http://*.craigslist.*
+// @include        http://*.craigslist.org/ct*
 // @version 1.0
 // ==/UserScript==
-
-/* Can be used with Greasemonkey on Firefox or Tampermonkey on Chrome */
 
 var index = 0;
 function processLink(_a) {
   var a = _a;
-    console.log("a prints...");
-    console.log(a);
   return function(details) {
     if (details.responseText) {
       a.id = index;
@@ -20,7 +16,6 @@ function processLink(_a) {
         if (details.responseText.toLowerCase().indexOf("salvage") !== -1) {
             check = '<span style="background:lightgreen;color:green;margin-left:8px;padding:2px 5px 2px 5px;border-radius:16px;" id="mycheckmark">✓</span>';
             salvageFlag = '<span id="myX" style="background: pink;color: red;margin-left: 8px;padding: 2px 5px 2px 5px;border-radius:32px;">Salvage</span>'
-            console.log(check + "" + $("#" + a.id).html());
             $("#"+a.id).append(salvageFlag);
         }
       
