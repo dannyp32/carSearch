@@ -3,6 +3,7 @@
 // @namespace      daniel.pino
 // @description    Shows ad preview on link mouseover
 // @include        http://*.craigslist.org/ct*
+// @include        http://*.craigslist.org/search/ct*
 // @version 1.0
 // ==/UserScript==
 
