@@ -2,6 +2,7 @@
 // @name           Craigslist Open House Finder
 // @namespace      daniel.pino
 // @include        http://*.craigslist.org/apa*
+// @include        http://*.craigslist.org/apa/search/*
 // @version 1.0
 // ==/UserScript==
 
