@@ -12,15 +12,29 @@ function processLink(_a) {
   var a = _a;
   return function(details) {
     if (details.responseText) {
-      a.id = index;
-
-        if (details.responseText.toLowerCase().indexOf("salvage") !== -1) {
+      	a.id = index;
+		var html = details.responseText.toLowerCase();
+        
+        if (html.indexOf("salvage") !== -1 || html.indexOf("slvg") !== -1 || html.indexOf("svg") != -1 || html.indexOf("parts only") != -1 || html.indexOf(" lease") !== -1 || html.indexOf("rebuilt") != -1) {
             check = '<span style="background:lightgreen;color:green;margin-left:8px;padding:2px 5px 2px 5px;border-radius:16px;" id="mycheckmark">✓</span>';
-            salvageFlag = '<span id="myX" style="background: pink;color: red;margin-left: 8px;padding: 2px 5px 2px 5px;border-radius:32px;">Salvage</span>'
-            $("#"+a.id).append(salvageFlag);
+            salvage = '<span id="myX" style="background: pink;color: red;margin-left: 8px;padding: 2px 5px 2px 5px;border-radius:32px;">Salvage</span>'
+            $("#"+a.id).append(salvage);            
+            //$("#"+a.id).parent().remove();
+
         }
-      
-      index++;
+        else if (html.indexOf(" lease") !== -1) {
+            lease = '<span id="myX" style="background: pink;color: red;margin-left: 8px;padding: 2px 5px 2px 5px;border-radius:32px;">Lease</span>'
+            $("#"+a.id).append(lease);            
+        }
+        //&#x0024;1 -> $1
+        //&#x0024 - unicode symbol for dollar sign followed by semicolon and the dollar amount
+        else if (html.indexOf("&#x0024;1 ") !== -1 || html.indexOf("&#x0024;2 ") !== -1 || html.indexOf("&#x0024;3 ") !== -1 ||
+                 html.indexOf("&#x0024;4 ") !== -1 || html.indexOf("&#x0024;5 ") !== -1) {
+            clickbait = '<span id="myX" style="background: pink;color: red;margin-left: 8px;padding: 2px 5px 2px 5px;border-radius:32px;">Click Bait</span>'
+            $("#"+a.id).append(clickbait);       
+        }
+            
+      	index++;
     }
   };
 }
